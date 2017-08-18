@@ -8,6 +8,7 @@ import com.github.faucamp.simplertmp.RtmpHandler;
 import com.seu.magicfilter.utils.MagicFilterType;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by Leo Ma on 2016/7/25.
@@ -307,5 +308,13 @@ public class SrsPublisher {
         if (mMp4Muxer != null) {
             mEncoder.setMp4Muxer(mMp4Muxer);
         }
+    }
+
+    public List<Integer> getZoomRatios() {
+        return mCameraView.getZoomRatios();
+    }
+
+    public void setZoom(int value) {
+        mCameraView.setZoom(value);
     }
 }

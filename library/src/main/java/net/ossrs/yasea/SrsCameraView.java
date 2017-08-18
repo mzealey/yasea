@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -410,6 +411,27 @@ public class SrsCameraView extends GLSurfaceView implements GLSurfaceView.Render
             Camera.Parameters params = mCamera.getParameters();
             params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
             mCamera.setParameters(params);
+        }
+    }
+
+    public List<Integer> getZoomRatios() {
+        if( mCamera != null ) {
+            Camera.Parameters params = mCamera.getParameters();
+            if( params.isZoomSupported() ) {
+                return params.getZoomRatios();
+            }
+        }
+
+        return new ArrayList<Integer>();
+    }
+
+    public void setZoom(int value) {
+        if( mCamera != null ) {
+            Camera.Parameters params = mCamera.getParameters();
+            if( params.isZoomSupported() ) {
+                params.setZoom(value);
+                mCamera.setParameters(params);
+            }
         }
     }
 
